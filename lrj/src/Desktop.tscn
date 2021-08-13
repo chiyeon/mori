@@ -1,0 +1,231 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://assets/textures/ui/background.png" type="Texture" id=1]
+[ext_resource path="res://assets/textures/ui/taskbar/taskbar.png" type="Texture" id=2]
+[ext_resource path="res://assets/textures/ui/icons/icon_web.png" type="Texture" id=3]
+[ext_resource path="res://assets/textures/ui/icons/icon_files.png" type="Texture" id=4]
+[ext_resource path="res://assets/textures/ui/icons/icon_messages.png" type="Texture" id=5]
+[ext_resource path="res://data/icon.tres" type="StyleBox" id=6]
+[ext_resource path="res://assets/textures/ui/taskbar/os_icon.png" type="Texture" id=8]
+[ext_resource path="res://assets/textures/ui/taskbar/taskbar_small.png" type="Texture" id=9]
+[ext_resource path="res://assets/textures/ui/taskbar/os_icon_small.png" type="Texture" id=10]
+[ext_resource path="res://assets/textures/ui/icons/icon_settings.png" type="Texture" id=11]
+[ext_resource path="res://src/Desktop.gd" type="Script" id=13]
+[ext_resource path="res://assets/textures/ui/cursor.png" type="Texture" id=15]
+[ext_resource path="res://src/Cursor.gd" type="Script" id=16]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 8, 8 )
+modulate_color = Color( 0.2, 0.2, 0.2, 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.133333, 0.133333, 0.133333, 1 )
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="Background"]
+margin_left = 3.0
+margin_top = 3.0
+margin_right = 62.0
+margin_bottom = 55.0
+custom_constants/vseparation = 2
+custom_constants/hseparation = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Icon" type="TextureButton" parent="Background/GridContainer"]
+margin_right = 8.0
+margin_bottom = 8.0
+focus_mode = 1
+enabled_focus_mode = 1
+texture_normal = ExtResource( 3 )
+
+[node name="Icon2" type="TextureButton" parent="Background/GridContainer"]
+margin_top = 10.0
+margin_right = 8.0
+margin_bottom = 18.0
+texture_normal = ExtResource( 5 )
+
+[node name="Icon3" type="TextureButton" parent="Background/GridContainer"]
+margin_top = 20.0
+margin_right = 8.0
+margin_bottom = 28.0
+texture_normal = ExtResource( 4 )
+
+[node name="Icon4" type="TextureButton" parent="Background/GridContainer"]
+margin_top = 30.0
+margin_right = 8.0
+margin_bottom = 38.0
+texture_normal = ExtResource( 11 )
+
+[node name="Taskbar" type="TextureRect" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -6.0
+texture = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="os_button" type="TextureButton" parent="Taskbar"]
+margin_left = 2.02341
+margin_top = 1.97085
+margin_right = 4.02341
+margin_bottom = 3.97085
+focus_mode = 0
+enabled_focus_mode = 0
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Taskbar"]
+margin_left = 7.0
+margin_top = 1.0
+margin_right = 63.0
+margin_bottom = 5.0
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Taskbard" type="TextureRect" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -32.0
+margin_top = -12.0
+margin_right = 32.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Taskbard"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 14.0
+margin_top = -13.0
+margin_bottom = 1.0
+rect_clip_content = true
+custom_constants/separation = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonWeb" type="Button" parent="Taskbard/HBoxContainer"]
+margin_right = 8.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 8, 8 )
+rect_clip_content = true
+focus_mode = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/normal = ExtResource( 6 )
+enabled_focus_mode = 0
+icon = ExtResource( 3 )
+flat = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonMessage" type="Button" parent="Taskbard/HBoxContainer"]
+margin_left = 9.0
+margin_right = 17.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 8, 8 )
+rect_clip_content = true
+focus_mode = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_styles/normal = ExtResource( 6 )
+enabled_focus_mode = 0
+icon = ExtResource( 5 )
+flat = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonFile" type="Button" parent="Taskbard/HBoxContainer"]
+margin_left = 18.0
+margin_right = 26.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 8, 8 )
+rect_clip_content = true
+focus_mode = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_styles/normal = ExtResource( 6 )
+enabled_focus_mode = 0
+icon = ExtResource( 4 )
+flat = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OSIcon" type="Button" parent="Taskbard"]
+margin_left = 1.89511
+margin_top = -1.33514
+margin_right = 9.89511
+margin_bottom = 12.6649
+rect_min_size = Vector2( 8, 8 )
+rect_clip_content = true
+focus_mode = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/normal = ExtResource( 6 )
+enabled_focus_mode = 0
+icon = ExtResource( 8 )
+flat = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Windows" type="CanvasLayer" parent="."]
+
+[node name="Cursor" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="Cursor" type="TextureRect" parent="Cursor"]
+margin_left = 20.9884
+margin_top = 14.9962
+margin_right = 23.9884
+margin_bottom = 17.9962
+mouse_filter = 2
+texture = ExtResource( 15 )
+script = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Background/GridContainer/Icon" to="." method="open_web"]
