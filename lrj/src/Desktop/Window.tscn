@@ -1,0 +1,60 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/Desktop/Window.gd" type="Script" id=1]
+[ext_resource path="res://assets/textures/ui/window/window_big.png" type="Texture" id=2]
+
+[node name="Window" type="NinePatchRect"]
+margin_left = 17.0
+margin_top = 16.0
+margin_right = 50.0
+margin_bottom = 45.0
+mouse_filter = 1
+texture = ExtResource( 2 )
+patch_margin_left = 10
+patch_margin_top = 6
+patch_margin_right = 10
+patch_margin_bottom = 6
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DragButton" type="TextureButton" parent="."]
+anchor_right = 1.0
+margin_bottom = 3.0
+mouse_filter = 1
+size_flags_horizontal = 3
+action_mode = 0
+
+[node name="CloseButton" type="TextureButton" parent="."]
+margin_right = 3.0
+margin_bottom = 3.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.08
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MaximizeButton" type="TextureButton" parent="."]
+margin_left = 3.0
+margin_right = 6.0
+margin_bottom = 3.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.08
+
+[node name="MinimizeButton" type="TextureButton" parent="."]
+margin_left = 6.0
+margin_right = 9.0
+margin_bottom = 3.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.08
+
+[connection signal="mouse_entered" from="." to="." method="_on_Window_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_Window_mouse_exited"]
+[connection signal="pressed" from="DragButton" to="." method="start_dragging"]
+[connection signal="pressed" from="CloseButton" to="." method="close_window"]
+[connection signal="pressed" from="MaximizeButton" to="." method="maximize_window"]
+[connection signal="pressed" from="MinimizeButton" to="." method="minimize_window"]

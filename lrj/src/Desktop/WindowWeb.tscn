@@ -1,0 +1,813 @@
+[gd_scene load_steps=28 format=2]
+
+[ext_resource path="res://src/Desktop/Window.gd" type="Script" id=1]
+[ext_resource path="res://assets/textures/ui/window/window_big.png" type="Texture" id=2]
+[ext_resource path="res://assets/fonts/m3x6.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/textures/ui/icons/youtube.png" type="Texture" id=4]
+[ext_resource path="res://assets/textures/ui/icons/face.png" type="Texture" id=5]
+[ext_resource path="res://assets/textures/ui/icons/game.png" type="Texture" id=6]
+[ext_resource path="res://data/font.tres" type="DynamicFont" id=7]
+[ext_resource path="res://assets/textures/ui/window/web/video.png" type="Texture" id=8]
+[ext_resource path="res://assets/textures/ui/window/web/video_pause_overlay.png" type="Texture" id=9]
+[ext_resource path="res://src/Desktop/Video.gd" type="Script" id=10]
+[ext_resource path="res://assets/textures/ui/window/web/video_character.png" type="Texture" id=11]
+[ext_resource path="res://assets/textures/ui/window/web/likedislike.png" type="Texture" id=12]
+[ext_resource path="res://assets/textures/ui/window/web/videodata.png" type="Texture" id=13]
+[ext_resource path="res://src/Desktop/WebWindows.gd" type="Script" id=15]
+[ext_resource path="res://assets/textures/ui/icons/error.png" type="Texture" id=16]
+[ext_resource path="res://assets/textures/ui/window/web/blood.png" type="Texture" id=17]
+[ext_resource path="res://assets/textures/ui/window/web/eye.png" type="Texture" id=18]
+[ext_resource path="res://assets/sound/imwatching.mp3" type="AudioStream" id=19]
+[ext_resource path="res://assets/sound/404.mp3" type="AudioStream" id=20]
+[ext_resource path="res://src/Desktop/Bug.tscn" type="PackedScene" id=21]
+[ext_resource path="res://assets/textures/ui/window/messages/back.png" type="Texture" id=22]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.682353, 0.701961, 0.717647, 1 )
+corner_detail = 1
+anti_aliasing = false
+
+[sub_resource type="DynamicFont" id=3]
+use_mipmaps = true
+extra_spacing_top = -4
+font_data = ExtResource( 3 )
+
+[sub_resource type="Animation" id=7]
+resource_name = "walk"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 3, 0 ]
+}
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "Open"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 3, 4, 5, 6, 7, 7, 7, 7 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1, 1.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("IM:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 2.4, 2.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("WATCHING:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 3.1, 3.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("YOU:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 3.8, 3.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../Panel:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 3.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../Blood:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("../Blood:frame")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.7, 1.5, 2.6, 3.7, 4.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("../Blood:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[node name="Window" type="NinePatchRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -24.5
+margin_top = -20.5
+margin_right = 24.5
+margin_bottom = 20.5
+mouse_filter = 1
+texture = ExtResource( 2 )
+patch_margin_left = 10
+patch_margin_top = 6
+patch_margin_right = 10
+patch_margin_bottom = 6
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DragButton" type="TextureButton" parent="."]
+anchor_right = 1.0
+margin_bottom = 3.0
+mouse_filter = 1
+size_flags_horizontal = 3
+action_mode = 0
+
+[node name="CloseButton" type="TextureButton" parent="."]
+margin_right = 3.0
+margin_bottom = 3.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.08
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MaximizeButton" type="TextureButton" parent="."]
+margin_left = 3.0
+margin_right = 6.0
+margin_bottom = 3.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.08
+
+[node name="MinimizeButton" type="TextureButton" parent="."]
+margin_left = 6.0
+margin_right = 9.0
+margin_bottom = 3.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.08
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="."]
+anchor_left = 0.041
+anchor_top = 0.122
+anchor_right = 0.98
+anchor_bottom = 1.0
+margin_left = -0.00900006
+margin_top = -0.00200033
+margin_right = -0.0200005
+mouse_filter = 1
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Home" type="Control" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control/Home"]
+anchor_right = 0.997
+anchor_bottom = 0.565
+margin_left = -0.125
+margin_top = -1.125
+margin_right = 0.0159988
+margin_bottom = 0.0100002
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "WEB"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="Control/Home"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -19.0
+margin_top = -9.0
+margin_right = 19.0
+margin_bottom = 9.0
+columns = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton" type="TextureButton" parent="Control/Home/GridContainer"]
+margin_top = 6.0
+margin_right = 6.0
+margin_bottom = 12.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+texture_normal = ExtResource( 4 )
+
+[node name="TextureButton2" type="TextureButton" parent="Control/Home/GridContainer"]
+margin_left = 10.0
+margin_top = 6.0
+margin_right = 16.0
+margin_bottom = 12.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+texture_normal = ExtResource( 5 )
+
+[node name="TextureButton3" type="TextureButton" parent="Control/Home/GridContainer"]
+margin_left = 20.0
+margin_top = 6.0
+margin_right = 26.0
+margin_bottom = 12.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+texture_normal = ExtResource( 6 )
+
+[node name="TextureButton4" type="TextureButton" parent="Control/Home/GridContainer"]
+margin_left = 30.0
+margin_top = 6.0
+margin_right = 36.0
+margin_bottom = 12.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+texture_normal = ExtResource( 16 )
+
+[node name="UserEdit" type="LineEdit" parent="Control/Home"]
+anchor_left = 0.128
+anchor_top = 0.944
+anchor_right = 0.894
+anchor_bottom = 0.944
+margin_left = -0.0160003
+margin_top = -8.984
+margin_right = -0.0180016
+margin_bottom = 0.0159988
+rect_clip_content = true
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/normal = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
+custom_constants/minimum_spaces = 0
+max_length = 10
+placeholder_text = "search"
+caret_blink = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bug" parent="Control/Home" instance=ExtResource( 21 )]
+
+[node name="Youtube" type="Control" parent="Control"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HomeButton" type="TextureButton" parent="Control/Youtube"]
+margin_left = 1.024
+margin_top = 1.863
+margin_right = 7.024
+margin_bottom = 7.863
+texture_normal = ExtResource( 22 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Control/Youtube"]
+margin_left = 7.66084
+margin_top = 0.671257
+margin_right = 13.6608
+margin_bottom = 6.67126
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control/Youtube"]
+margin_left = 14.6608
+margin_top = -0.078743
+margin_right = 54.6608
+margin_bottom = 8.92126
+custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "VIDEOS4u"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Video" type="Control" parent="Control/Youtube"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -12.0
+margin_top = -8.0
+margin_right = 12.0
+margin_bottom = 4.0
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Video" type="Sprite" parent="Control/Youtube/Video"]
+position = Vector2( 12, 7.105 )
+texture = ExtResource( 8 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 24, 16 )
+
+[node name="Steve" type="Sprite" parent="Control/Youtube/Video"]
+position = Vector2( 5.433, 6.606 )
+texture = ExtResource( 11 )
+hframes = 4
+frame = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/Youtube/Video/Steve"]
+autoplay = "walk"
+anims/walk = SubResource( 7 )
+
+[node name="pause" type="TextureRect" parent="Control/Youtube/Video"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -11.685
+margin_top = -6.97631
+margin_right = 12.315
+margin_bottom = 9.02369
+texture = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="likedislike2" type="TextureRect" parent="Control/Youtube/Video"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -13.7324
+margin_top = 7.90651
+margin_right = 18.2676
+margin_bottom = 19.9065
+texture = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bug" parent="Control/Youtube" instance=ExtResource( 21 )]
+margin_left = 14.547
+margin_top = 19.087
+margin_right = 22.547
+margin_bottom = 27.087
+
+[node name="likedislike" type="TextureRect" parent="Control/Youtube"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 4.258
+margin_top = 8.0
+margin_right = 12.258
+margin_bottom = 14.0
+texture = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bug2" parent="Control/Youtube" instance=ExtResource( 21 )]
+margin_left = 29.924
+margin_top = 34.415
+margin_right = 37.924
+margin_bottom = 42.415
+rect_rotation = -90.5
+
+[node name="Bug3" parent="Control/Youtube" instance=ExtResource( 21 )]
+margin_left = 23.258
+margin_top = 0.845
+margin_right = 31.258
+margin_bottom = 8.845
+
+[node name="Forum" type="Control" parent="Control"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HomeButton" type="TextureButton" parent="Control/Forum"]
+margin_left = 1.02369
+margin_top = 0.944941
+margin_right = 7.02369
+margin_bottom = 6.94494
+texture_normal = ExtResource( 22 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Control/Forum"]
+margin_left = 7.66084
+margin_top = 0.671257
+margin_right = 13.6608
+margin_bottom = 6.67126
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control/Forum"]
+margin_left = 14.6608
+margin_top = -0.078743
+margin_right = 54.6608
+margin_bottom = 8.92126
+custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "FORUMS"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="Control/Forum"]
+margin_left = 1.16084
+margin_top = 6.92126
+margin_right = 47.1608
+margin_bottom = 15.9213
+rect_pivot_offset = Vector2( 23, 6.18474 )
+custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color = Color( 0.384314, 0.384314, 0.384314, 1 )
+text = "membermere"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="Control/Forum"]
+margin_left = 1.03584
+margin_top = 14.0463
+margin_right = 47.0358
+margin_bottom = 23.0463
+rect_pivot_offset = Vector2( 23, 6.18474 )
+custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color = Color( 0.384314, 0.384314, 0.384314, 1 )
+text = "mbermereme"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label5" type="Label" parent="Control/Forum"]
+margin_left = 1.03584
+margin_top = 20.9213
+margin_right = 47.0358
+margin_bottom = 29.9213
+rect_pivot_offset = Vector2( 23, 6.18474 )
+custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color = Color( 0.384314, 0.384314, 0.384314, 1 )
+text = "ermerememb"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label6" type="Label" parent="Control/Forum"]
+margin_left = 1.41084
+margin_top = 27.9213
+margin_right = 47.4108
+margin_bottom = 36.9213
+rect_pivot_offset = Vector2( 23, 6.18474 )
+custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color = Color( 0.384314, 0.384314, 0.384314, 1 )
+text = "meremember"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bug" parent="Control/Forum" instance=ExtResource( 21 )]
+margin_left = 5.378
+margin_top = 9.715
+margin_right = 13.378
+margin_bottom = 17.715
+
+[node name="Bug2" parent="Control/Forum" instance=ExtResource( 21 )]
+margin_left = 18.724
+margin_top = 4.409
+margin_right = 26.724
+margin_bottom = 12.409
+
+[node name="Bug3" parent="Control/Forum" instance=ExtResource( 21 )]
+margin_left = 27.51
+margin_top = 12.136
+margin_right = 35.51
+margin_bottom = 20.136
+
+[node name="Bug4" parent="Control/Forum" instance=ExtResource( 21 )]
+margin_left = 33.316
+margin_top = 18.905
+margin_right = 41.316
+margin_bottom = 26.905
+
+[node name="Bug5" parent="Control/Forum" instance=ExtResource( 21 )]
+margin_left = 15.154
+margin_top = 18.905
+margin_right = 23.154
+margin_bottom = 26.905
+
+[node name="Bug6" parent="Control/Forum" instance=ExtResource( 21 )]
+margin_left = 9.254
+margin_top = 24.24
+margin_right = 17.254
+margin_bottom = 32.24
+
+[node name="Bug7" parent="Control/Forum" instance=ExtResource( 21 )]
+margin_left = 26.766
+margin_top = 26.104
+margin_right = 34.766
+margin_bottom = 34.104
+
+[node name="Games" type="Control" parent="Control"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HomeButton" type="TextureButton" parent="Control/Games"]
+margin_left = 1.02369
+margin_top = 0.944941
+margin_right = 7.02369
+margin_bottom = 6.94494
+texture_normal = ExtResource( 22 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Control/Games"]
+margin_left = 7.66084
+margin_top = 0.671257
+margin_right = 13.6608
+margin_bottom = 6.67126
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="0" type="Label" parent="Control/Games"]
+margin_left = 14.6608
+margin_top = -0.078743
+margin_right = 54.6608
+margin_bottom = 8.92126
+custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "BLOODBLO"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="1" type="Label" parent="Control/Games"]
+margin_left = 2.125
+margin_top = 7.75
+margin_right = 46.125
+margin_bottom = 16.75
+rect_pivot_offset = Vector2( 23, 6.18474 )
+custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color = Color( 0.384314, 0.384314, 0.384314, 1 )
+text = "BLOODBLOODB"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="2" type="Label" parent="Control/Games"]
+margin_left = 2.125
+margin_top = 16.125
+margin_right = 34.125
+margin_bottom = 25.125
+rect_pivot_offset = Vector2( 23, 6.18474 )
+custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color = Color( 0.384314, 0.384314, 0.384314, 1 )
+text = "bloodbloodb"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="3" type="Label" parent="Control/Games"]
+margin_left = 1.75
+margin_top = 22.5
+margin_right = 33.75
+margin_bottom = 31.5
+rect_pivot_offset = Vector2( 23, 6.18474 )
+custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color = Color( 0.560784, 0.560784, 0.560784, 1 )
+text = "oodbloodblo"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="Control/Games"]
+wait_time = 0.2
+
+[node name="Error" type="Control" parent="Control"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HomeButton" type="TextureButton" parent="Control/Error"]
+margin_left = 1.02369
+margin_top = 0.944941
+margin_right = 7.02369
+margin_bottom = 6.94494
+texture_normal = ExtResource( 22 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="Control/Error"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -6.0
+margin_top = -4.5
+margin_right = 6.0
+margin_bottom = 4.5
+rect_pivot_offset = Vector2( 23, 6.18474 )
+custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color = Color( 0.560784, 0.560784, 0.560784, 1 )
+text = "404"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="Control"]
+wait_time = 0.03
+
+[node name="Panel" type="Panel" parent="Control"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -9.61799
+margin_top = -16.6324
+margin_right = 54.382
+margin_bottom = 47.3676
+mouse_filter = 2
+custom_styles/panel = SubResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Blood" type="Sprite" parent="Control"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 21.9533, 15.0605 )
+texture = ExtResource( 17 )
+hframes = 4
+vframes = 2
+
+[node name="Eye" type="Sprite" parent="Control"]
+visible = false
+position = Vector2( 22.4373, 11.9394 )
+texture = ExtResource( 18 )
+hframes = 4
+vframes = 2
+frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/Eye"]
+anims/Open = SubResource( 5 )
+
+[node name="IM" type="Label" parent="Control/Eye"]
+visible = false
+margin_left = -15.4873
+margin_top = 6.85172
+margin_right = -5.4873
+margin_bottom = 20.8517
+custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color = Color( 0.729412, 0.101961, 0.101961, 1 )
+text = "I"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WATCHING" type="Label" parent="Control/Eye"]
+visible = false
+margin_left = -8.25888
+margin_top = 5.56144
+margin_right = 25.7411
+margin_bottom = 19.5614
+custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color = Color( 0.729412, 0.101961, 0.101961, 1 )
+text = "SEE"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="YOU" type="Label" parent="Control/Eye"]
+visible = false
+margin_left = 5.86273
+margin_top = 7.81906
+margin_right = 17.8627
+margin_bottom = 21.8191
+custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color = Color( 0.729412, 0.101961, 0.101961, 1 )
+text = "YOU"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="scary" type="AudioStreamPlayer" parent="Control"]
+stream = ExtResource( 19 )
+
+[node name="error" type="AudioStreamPlayer" parent="Control"]
+stream = ExtResource( 20 )
+
+[connection signal="mouse_entered" from="." to="." method="_on_Window_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_Window_mouse_exited"]
+[connection signal="pressed" from="DragButton" to="." method="start_dragging"]
+[connection signal="pressed" from="CloseButton" to="." method="close_window"]
+[connection signal="pressed" from="MaximizeButton" to="." method="maximize_window"]
+[connection signal="pressed" from="MinimizeButton" to="." method="minimize_window"]
+[connection signal="pressed" from="Control/Home/GridContainer/TextureButton" to="Control" method="GotoYoutube"]
+[connection signal="pressed" from="Control/Home/GridContainer/TextureButton2" to="Control" method="GotoForum"]
+[connection signal="pressed" from="Control/Home/GridContainer/TextureButton3" to="Control" method="GotoGames"]
+[connection signal="pressed" from="Control/Home/GridContainer/TextureButton4" to="Control" method="GotoError"]
+[connection signal="text_changed" from="Control/Home/UserEdit" to="Control" method="_on_UserEdit_text_changed"]
+[connection signal="pressed" from="Control/Youtube/HomeButton" to="Control" method="GotoHome"]
+[connection signal="mouse_entered" from="Control/Youtube/Video" to="Control/Youtube/Video" method="_on_Video_mouse_entered"]
+[connection signal="mouse_exited" from="Control/Youtube/Video" to="Control/Youtube/Video" method="_on_Video_mouse_exited"]
+[connection signal="pressed" from="Control/Forum/HomeButton" to="Control" method="GotoHome"]
+[connection signal="pressed" from="Control/Games/HomeButton" to="Control" method="GotoHome"]
+[connection signal="pressed" from="Control/Error/HomeButton" to="Control" method="GotoHome"]

@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://data/font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/textures/ui/window/messages/message_other.png" type="Texture" id=2]
+[ext_resource path="res://assets/sound/newmessage.mp3" type="AudioStream" id=3]
+
+[node name="Control" type="Control"]
+margin_right = 32.0
+margin_bottom = 13.0
+rect_min_size = Vector2( 32, 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MessageOther4" type="NinePatchRect" parent="."]
+margin_left = 1.19055
+margin_top = 1.25198
+margin_right = 14.1906
+margin_bottom = 12.252
+rect_min_size = Vector2( 13, 11 )
+texture = ExtResource( 2 )
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MessageOther4"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -5.54932
+margin_top = -4.73724
+margin_right = 23.4507
+margin_bottom = 4.26276
+custom_fonts/font = ExtResource( 1 )
+text = "DIE"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="MessageOther4"]
+stream = ExtResource( 3 )
+volume_db = -80.0
+autoplay = true

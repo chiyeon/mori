@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/textures/ui/window/web/blood.png" type="Texture" id=1]
+[ext_resource path="res://data/font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/textures/ui/face2.png" type="Texture" id=3]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.0980392, 0, 0, 1 )
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+margin_right = 64.0
+margin_bottom = 64.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = -0.148651
+margin_right = 255.851
+margin_bottom = 128.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+margin_left = 22.7436
+margin_top = 15.0137
+margin_right = 278.744
+margin_bottom = 143.014
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 20.6625
+margin_top = 36.4195
+margin_right = 60.6625
+margin_bottom = 50.4195
+custom_fonts/font = ExtResource( 2 )
+text = "LEAVE"
+__meta__ = {
+"_edit_use_anchors_": false
+}

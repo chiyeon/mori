@@ -1,0 +1,798 @@
+[gd_scene load_steps=28 format=2]
+
+[ext_resource path="res://src/Desktop/Window.gd" type="Script" id=1]
+[ext_resource path="res://assets/textures/ui/window/window_big.png" type="Texture" id=2]
+[ext_resource path="res://assets/textures/ui/window/messages/message_box.png" type="Texture" id=3]
+[ext_resource path="res://assets/textures/ui/window/messages/profile.png" type="Texture" id=4]
+[ext_resource path="res://assets/textures/ui/window/messages/messages_1.png" type="Texture" id=5]
+[ext_resource path="res://assets/textures/ui/window/messages/messages_2.png" type="Texture" id=6]
+[ext_resource path="res://assets/textures/ui/window/messages/messages_4.png" type="Texture" id=7]
+[ext_resource path="res://assets/textures/ui/window/messages/messages_3.png" type="Texture" id=8]
+[ext_resource path="res://assets/textures/ui/window/messages/profile_4.png" type="Texture" id=9]
+[ext_resource path="res://assets/textures/ui/window/messages/profile_3.png" type="Texture" id=10]
+[ext_resource path="res://assets/textures/ui/window/messages/profile_2.png" type="Texture" id=11]
+[ext_resource path="res://assets/textures/ui/window/messages/message_profile_background.png" type="Texture" id=12]
+[ext_resource path="res://assets/textures/ui/window/messages/message_self.png" type="Texture" id=13]
+[ext_resource path="res://assets/fonts/m3x6.ttf" type="DynamicFontData" id=14]
+[ext_resource path="res://data/font.tres" type="DynamicFont" id=15]
+[ext_resource path="res://assets/textures/ui/window/messages/back.png" type="Texture" id=16]
+[ext_resource path="res://src/Desktop/Messages.gd" type="Script" id=17]
+[ext_resource path="res://assets/textures/ui/window/messages/message_other.png" type="Texture" id=18]
+[ext_resource path="res://data/NoScrollbar.tres" type="Theme" id=19]
+[ext_resource path="res://src/Desktop/DieMessage.tscn" type="PackedScene" id=20]
+[ext_resource path="res://assets/textures/ui/window/messages/send_error.png" type="Texture" id=21]
+[ext_resource path="res://assets/textures/ui/window/messages/send.png" type="Texture" id=22]
+[ext_resource path="res://src/Desktop/Bug.tscn" type="PackedScene" id=23]
+[ext_resource path="res://assets/sound/sus.mp3" type="AudioStream" id=24]
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.490196, 0.505882, 0.517647, 1 )
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.682353, 0.701961, 0.717647, 1 )
+corner_detail = 1
+anti_aliasing = false
+
+[sub_resource type="DynamicFont" id=2]
+use_mipmaps = true
+extra_spacing_top = -4
+font_data = ExtResource( 14 )
+
+[node name="Window" type="NinePatchRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -17.0
+margin_top = -22.5
+margin_right = 17.0
+margin_bottom = 22.5
+mouse_filter = 1
+texture = ExtResource( 2 )
+patch_margin_left = 10
+patch_margin_top = 6
+patch_margin_right = 10
+patch_margin_bottom = 6
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DragButton" type="TextureButton" parent="."]
+anchor_right = 1.0
+margin_bottom = 3.0
+mouse_filter = 1
+size_flags_horizontal = 3
+action_mode = 0
+
+[node name="CloseButton" type="TextureButton" parent="."]
+margin_right = 3.0
+margin_bottom = 3.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.08
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MaximizeButton" type="TextureButton" parent="."]
+visible = false
+margin_left = 3.0
+margin_right = 6.0
+margin_bottom = 3.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.08
+
+[node name="MinimizeButton" type="TextureButton" parent="."]
+margin_left = 6.0
+margin_right = 9.0
+margin_bottom = 3.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.08
+
+[node name="Messages" type="Control" parent="."]
+anchor_left = 0.029
+anchor_top = 0.089
+anchor_right = 0.971
+anchor_bottom = 0.978
+margin_left = 0.0139999
+margin_top = 0.995
+margin_right = -0.0140038
+margin_bottom = -0.0100021
+mouse_filter = 2
+script = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Home" type="VBoxContainer" parent="Messages"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -1.0
+margin_bottom = 1.0
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Message" type="TextureButton" parent="Messages/Home"]
+margin_right = 32.0
+margin_bottom = 10.0
+texture_normal = ExtResource( 3 )
+
+[node name="Icon" type="TextureRect" parent="Messages/Home/Message"]
+margin_left = 0.982151
+margin_top = 1.824
+margin_right = 8.98215
+margin_bottom = 9.824
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Messages" type="TextureRect" parent="Messages/Home/Message"]
+margin_left = 11.9513
+margin_top = 1.99104
+margin_right = 30.9513
+margin_bottom = 9.99104
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bug2" parent="Messages/Home/Message" instance=ExtResource( 23 )]
+margin_left = 2.52554
+margin_top = 1.97659
+margin_right = 10.5255
+margin_bottom = 9.97659
+
+[node name="Message2" type="TextureButton" parent="Messages/Home"]
+margin_top = 10.0
+margin_right = 32.0
+margin_bottom = 20.0
+texture_normal = ExtResource( 3 )
+
+[node name="Icon" type="TextureRect" parent="Messages/Home/Message2"]
+margin_left = 0.982151
+margin_top = 1.824
+margin_right = 8.98215
+margin_bottom = 9.824
+texture = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Messages" type="TextureRect" parent="Messages/Home/Message2"]
+margin_left = 11.7843
+margin_top = 2.10241
+margin_right = 30.7843
+margin_bottom = 10.1024
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Message3" type="TextureButton" parent="Messages/Home"]
+margin_top = 20.0
+margin_right = 32.0
+margin_bottom = 30.0
+texture_normal = ExtResource( 3 )
+
+[node name="Icon" type="TextureRect" parent="Messages/Home/Message3"]
+margin_left = 0.982151
+margin_top = 1.824
+margin_right = 8.98215
+margin_bottom = 9.824
+texture = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Messages" type="TextureRect" parent="Messages/Home/Message3"]
+margin_left = 11.7286
+margin_top = 2.21377
+margin_right = 30.7286
+margin_bottom = 10.2138
+texture = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Message4" type="TextureButton" parent="Messages/Home"]
+margin_top = 30.0
+margin_right = 32.0
+margin_bottom = 40.0
+texture_normal = ExtResource( 3 )
+
+[node name="Icon" type="TextureRect" parent="Messages/Home/Message4"]
+margin_left = 0.982151
+margin_top = 1.824
+margin_right = 8.98215
+margin_bottom = 9.824
+texture = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Messages" type="TextureRect" parent="Messages/Home/Message4"]
+margin_left = 11.7843
+margin_top = 2.21377
+margin_right = 30.7843
+margin_bottom = 10.2138
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bug3" parent="Messages/Home/Message4" instance=ExtResource( 23 )]
+margin_left = -1.26278
+margin_top = 0.739685
+margin_right = 6.73722
+margin_bottom = 8.73969
+
+[node name="Bug4" parent="Messages/Home/Message4" instance=ExtResource( 23 )]
+margin_left = 4.91077
+margin_top = 3.54584
+margin_right = 12.9108
+margin_bottom = 11.5458
+
+[node name="Bug5" parent="Messages/Home/Message4" instance=ExtResource( 23 )]
+margin_left = 22.1686
+margin_top = 0.459064
+margin_right = 30.1686
+margin_bottom = 8.45906
+
+[node name="Bug6" parent="Messages/Home/Message4" instance=ExtResource( 23 )]
+margin_left = 15.5742
+margin_top = 1.86214
+margin_right = 23.5742
+margin_bottom = 9.86214
+
+[node name="MessagePurple" type="Control" parent="Messages"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="TextureRect" parent="Messages/MessagePurple"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -16.0
+margin_top = -20.5256
+margin_right = 16.0
+margin_bottom = 19.4744
+texture = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackButton" type="TextureButton" parent="Messages/MessagePurple"]
+margin_left = 1.47157
+margin_top = 1.05112
+margin_right = 7.47157
+margin_bottom = 7.05112
+texture_normal = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Profile" type="TextureRect" parent="Messages/MessagePurple"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -4.0
+margin_right = 4.0
+margin_bottom = 8.0
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MessageSelf" type="NinePatchRect" parent="Messages/MessagePurple"]
+margin_left = 10.6307
+margin_top = 15.4744
+margin_right = 30.6307
+margin_bottom = 27.4744
+texture = ExtResource( 13 )
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Messages/MessagePurple/MessageSelf"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -8.7131
+margin_top = -5.31821
+margin_right = 12.2869
+margin_bottom = 8.68179
+custom_fonts/font = ExtResource( 15 )
+text = "u up?"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UserEdit" type="LineEdit" parent="Messages/MessagePurple"]
+anchor_left = 0.128
+anchor_top = 0.944
+anchor_right = 0.894
+anchor_bottom = 0.944
+margin_left = -3.096
+margin_top = -7.816
+margin_right = 2.392
+margin_bottom = 1.184
+rect_clip_content = true
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/read_only = SubResource( 3 )
+custom_styles/normal = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
+custom_constants/minimum_spaces = 0
+max_length = 10
+editable = false
+placeholder_text = "ERROR"
+caret_blink = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton" type="TextureButton" parent="Messages/MessagePurple"]
+margin_left = 24.0157
+margin_top = 28.7102
+margin_right = 31.0157
+margin_bottom = 36.7102
+texture_normal = ExtResource( 21 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bug2" parent="Messages/MessagePurple" instance=ExtResource( 23 )]
+margin_left = 14.1711
+margin_top = 1.41536
+margin_right = 22.1711
+margin_bottom = 9.41536
+
+[node name="Bug3" parent="Messages/MessagePurple" instance=ExtResource( 23 )]
+margin_left = 16.9772
+margin_top = 30.1785
+margin_right = 24.9772
+margin_bottom = 38.1785
+
+[node name="MessageGreen" type="Control" parent="Messages"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="TextureRect" parent="Messages/MessageGreen"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -15.8949
+margin_top = -20.3153
+margin_right = 16.1051
+margin_bottom = 19.6847
+texture = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackButton" type="TextureButton" parent="Messages/MessageGreen"]
+margin_left = 1.47157
+margin_top = 1.05112
+margin_right = 7.47157
+margin_bottom = 7.05112
+texture_normal = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Profile" type="TextureRect" parent="Messages/MessageGreen"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -4.0
+margin_right = 4.0
+margin_bottom = 8.0
+texture = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MessageSelf" type="NinePatchRect" parent="Messages/MessageGreen"]
+visible = false
+margin_left = 10.0
+margin_top = 16.0
+margin_right = 30.0
+margin_bottom = 28.0
+texture = ExtResource( 13 )
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Messages/MessageGreen/MessageSelf"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -8.7131
+margin_top = -5.31821
+margin_right = 12.2869
+margin_bottom = 8.68179
+custom_fonts/font = ExtResource( 15 )
+text = "u up?"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MessageOther" type="NinePatchRect" parent="Messages/MessageGreen"]
+margin_left = 1.0
+margin_top = 10.0
+margin_right = 31.0
+margin_bottom = 27.0
+texture = ExtResource( 18 )
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Messages/MessageGreen/MessageOther"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -14.0
+margin_top = -8.5
+margin_right = 15.0
+margin_bottom = 0.5
+custom_fonts/font = ExtResource( 15 )
+text = "send me"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Messages/MessageGreen/MessageOther"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -13.8949
+margin_top = -1.98306
+margin_right = 15.1051
+margin_bottom = 7.01694
+custom_fonts/font = ExtResource( 15 )
+text = "the hw"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UserEdit" type="LineEdit" parent="Messages/MessageGreen"]
+anchor_left = 0.128
+anchor_top = 0.944
+anchor_right = 0.894
+anchor_bottom = 0.944
+margin_left = -3.096
+margin_top = -7.816
+margin_right = 2.392
+margin_bottom = 1.184
+rect_clip_content = true
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/read_only = SubResource( 3 )
+custom_styles/normal = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
+custom_constants/minimum_spaces = 0
+max_length = 10
+editable = false
+placeholder_text = "ERROR"
+caret_blink = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton" type="TextureButton" parent="Messages/MessageGreen"]
+margin_left = 24.3134
+margin_top = 29.2063
+margin_right = 31.3134
+margin_bottom = 37.2063
+texture_normal = ExtResource( 21 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bug2" parent="Messages/MessageGreen" instance=ExtResource( 23 )]
+margin_left = 22.7299
+margin_top = 29.3366
+margin_right = 30.7299
+margin_bottom = 37.3366
+
+[node name="MessageBlue" type="Control" parent="Messages"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="TextureRect" parent="Messages/MessageBlue"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -15.8949
+margin_top = -20.3153
+margin_right = 16.1051
+margin_bottom = 19.6847
+texture = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackButton" type="TextureButton" parent="Messages/MessageBlue"]
+margin_left = 1.47157
+margin_top = 1.05112
+margin_right = 7.47157
+margin_bottom = 7.05112
+texture_normal = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Profile" type="TextureRect" parent="Messages/MessageBlue"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -4.0
+margin_right = 4.0
+margin_bottom = 8.0
+texture = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MessageSelf" type="NinePatchRect" parent="Messages/MessageBlue"]
+visible = false
+margin_left = 10.0
+margin_top = 16.0
+margin_right = 30.0
+margin_bottom = 28.0
+texture = ExtResource( 13 )
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Messages/MessageBlue/MessageSelf"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -8.7131
+margin_top = -5.31821
+margin_right = 12.2869
+margin_bottom = 8.68179
+custom_fonts/font = ExtResource( 15 )
+text = "u up?"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MessageOther" type="NinePatchRect" parent="Messages/MessageBlue"]
+margin_left = 1.0
+margin_top = 10.0
+margin_right = 26.0
+margin_bottom = 27.0
+texture = ExtResource( 18 )
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Messages/MessageBlue/MessageOther"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -10.8466
+margin_top = -8.71022
+margin_right = 18.1534
+margin_bottom = 0.289776
+custom_fonts/font = ExtResource( 15 )
+text = "among"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Messages/MessageBlue/MessageOther"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -10.6364
+margin_top = -0.616596
+margin_right = 18.3636
+margin_bottom = 8.3834
+custom_fonts/font = ExtResource( 15 )
+text = "us?"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UserEdit" type="LineEdit" parent="Messages/MessageBlue"]
+anchor_left = 0.128
+anchor_top = 0.944
+anchor_right = 0.894
+anchor_bottom = 0.944
+margin_left = -3.096
+margin_top = -7.816
+margin_right = 2.392
+margin_bottom = 1.184
+rect_clip_content = true
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/read_only = SubResource( 3 )
+custom_styles/normal = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
+custom_constants/minimum_spaces = 0
+max_length = 10
+editable = false
+placeholder_text = "ERROR"
+caret_blink = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton" type="TextureButton" parent="Messages/MessageBlue"]
+margin_left = 24.115
+margin_top = 29.1071
+margin_right = 31.115
+margin_bottom = 37.1071
+texture_normal = ExtResource( 21 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MessageRed" type="Control" parent="Messages"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="TextureRect" parent="Messages/MessageRed"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -15.8949
+margin_top = -20.3153
+margin_right = 16.1051
+margin_bottom = 19.6847
+texture = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackButton" type="TextureButton" parent="Messages/MessageRed"]
+margin_left = 1.47157
+margin_top = 1.05112
+margin_right = 7.47157
+margin_bottom = 7.05112
+texture_normal = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Profile" type="TextureRect" parent="Messages/MessageRed"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -4.0
+margin_right = 4.0
+margin_bottom = 8.0
+texture = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UserEdit" type="LineEdit" parent="Messages/MessageRed"]
+anchor_left = 0.128
+anchor_top = 0.944
+anchor_right = 0.894
+anchor_bottom = 0.944
+margin_left = -3.096
+margin_top = -8.76
+margin_right = 2.392
+margin_bottom = 0.239998
+rect_clip_content = true
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/normal = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
+custom_constants/minimum_spaces = 0
+max_length = 3
+placeholder_text = "send"
+caret_blink = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Messages/MessageRed"]
+margin_left = 1.0
+margin_top = 10.0
+margin_right = 31.0
+margin_bottom = 27.0
+theme = ExtResource( 19 )
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="Messages/MessageRed/ScrollContainer"]
+margin_right = 32.0
+margin_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+custom_constants/vseparation = 0
+
+[node name="MessageOther4" parent="Messages/MessageRed/ScrollContainer/GridContainer" instance=ExtResource( 20 )]
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="TextureButton" type="TextureButton" parent="Messages/MessageRed"]
+margin_left = 24.115
+margin_top = 28.3134
+margin_right = 31.115
+margin_bottom = 36.3134
+texture_normal = ExtResource( 22 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="Messages"]
+wait_time = 0.02
+
+[node name="Sus" type="AudioStreamPlayer" parent="Messages"]
+stream = ExtResource( 24 )
+
+[connection signal="mouse_entered" from="." to="." method="_on_Window_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_Window_mouse_exited"]
+[connection signal="pressed" from="DragButton" to="." method="start_dragging"]
+[connection signal="pressed" from="CloseButton" to="." method="close_window"]
+[connection signal="pressed" from="MaximizeButton" to="." method="maximize_window"]
+[connection signal="pressed" from="MinimizeButton" to="." method="minimize_window"]
+[connection signal="pressed" from="Messages/Home/Message" to="Messages" method="GotoPurple"]
+[connection signal="pressed" from="Messages/Home/Message2" to="Messages" method="GotoGreen"]
+[connection signal="pressed" from="Messages/Home/Message3" to="Messages" method="GotoBlue"]
+[connection signal="pressed" from="Messages/Home/Message4" to="Messages" method="GotoRed"]
+[connection signal="pressed" from="Messages/MessagePurple/BackButton" to="Messages" method="GotoHome"]
+[connection signal="pressed" from="Messages/MessageGreen/BackButton" to="Messages" method="GotoHome"]
+[connection signal="pressed" from="Messages/MessageBlue/BackButton" to="Messages" method="GotoHome"]
+[connection signal="pressed" from="Messages/MessageRed/BackButton" to="Messages" method="GotoHome"]
+[connection signal="text_entered" from="Messages/MessageRed/UserEdit" to="Messages" method="_on_UserEdit_text_entered"]
+[connection signal="pressed" from="Messages/MessageRed/TextureButton" to="Messages" method="_on_TextureButton_pressed"]

@@ -1,0 +1,314 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://src/Desktop/Window.gd" type="Script" id=1]
+[ext_resource path="res://assets/textures/ui/window/window_big.png" type="Texture" id=2]
+[ext_resource path="res://assets/textures/ui/icons/files.png" type="Texture" id=3]
+[ext_resource path="res://assets/textures/ui/icons/file.png" type="Texture" id=4]
+[ext_resource path="res://assets/textures/ui/icons/image.png" type="Texture" id=5]
+[ext_resource path="res://src/Desktop/Files.gd" type="Script" id=6]
+[ext_resource path="res://assets/textures/ui/window/messages/back.png" type="Texture" id=7]
+[ext_resource path="res://src/Desktop/Bug.tscn" type="PackedScene" id=8]
+
+[node name="Window" type="NinePatchRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -14.0
+margin_right = 21.0
+margin_bottom = 13.0
+mouse_filter = 1
+texture = ExtResource( 2 )
+patch_margin_left = 10
+patch_margin_top = 6
+patch_margin_right = 10
+patch_margin_bottom = 6
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DragButton" type="TextureButton" parent="."]
+anchor_right = 1.0
+margin_bottom = 3.0
+mouse_filter = 1
+size_flags_horizontal = 3
+action_mode = 0
+
+[node name="CloseButton" type="TextureButton" parent="."]
+margin_right = 3.0
+margin_bottom = 3.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.08
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MaximizeButton" type="TextureButton" parent="."]
+margin_left = 3.0
+margin_right = 6.0
+margin_bottom = 3.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.08
+
+[node name="MinimizeButton" type="TextureButton" parent="."]
+margin_left = 6.0
+margin_right = 9.0
+margin_bottom = 3.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.08
+
+[node name="Files" type="Control" parent="."]
+anchor_left = 0.023
+anchor_top = 0.105
+anchor_right = 0.977
+anchor_bottom = 0.974
+margin_left = 0.0569999
+margin_top = 1.165
+margin_right = -0.057003
+margin_bottom = -0.298
+mouse_filter = 2
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Home" type="Control" parent="Files"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="Files/Home"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_top = 2.0
+margin_right = -2.0
+margin_bottom = -2.0
+custom_constants/vseparation = 2
+custom_constants/hseparation = 2
+columns = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton" type="TextureButton" parent="Files/Home/GridContainer"]
+margin_right = 6.0
+margin_bottom = 6.0
+texture_normal = ExtResource( 3 )
+
+[node name="TextureButton2" type="TextureButton" parent="Files/Home/GridContainer"]
+modulate = Color( 0.752941, 0.529412, 1, 1 )
+margin_left = 8.0
+margin_right = 14.0
+margin_bottom = 6.0
+texture_normal = ExtResource( 3 )
+
+[node name="TextureButton3" type="TextureButton" parent="Files/Home/GridContainer"]
+modulate = Color( 0.462745, 0.87451, 1, 1 )
+margin_left = 16.0
+margin_right = 22.0
+margin_bottom = 6.0
+texture_normal = ExtResource( 3 )
+
+[node name="Bug" parent="Files/Home" instance=ExtResource( 8 )]
+margin_left = 26.3284
+margin_top = 1.98889
+margin_right = 34.3284
+margin_bottom = 9.98889
+
+[node name="Folder1" type="Control" parent="Files"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="Files/Folder1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_top = 2.0
+margin_right = -2.0
+margin_bottom = -2.0
+custom_constants/vseparation = 2
+custom_constants/hseparation = 2
+columns = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton4" type="TextureButton" parent="Files/Folder1/GridContainer"]
+margin_right = 6.0
+margin_bottom = 6.0
+texture_normal = ExtResource( 7 )
+
+[node name="TextureButton" type="TextureButton" parent="Files/Folder1/GridContainer"]
+margin_left = 8.0
+margin_right = 14.0
+margin_bottom = 6.0
+texture_normal = ExtResource( 4 )
+
+[node name="TextureButton2" type="TextureButton" parent="Files/Folder1/GridContainer"]
+margin_left = 16.0
+margin_right = 22.0
+margin_bottom = 6.0
+texture_normal = ExtResource( 4 )
+
+[node name="TextureButton3" type="TextureButton" parent="Files/Folder1/GridContainer"]
+margin_left = 24.0
+margin_right = 30.0
+margin_bottom = 6.0
+texture_normal = ExtResource( 5 )
+
+[node name="Bug" parent="Files/Folder1" instance=ExtResource( 8 )]
+margin_left = 3.8148
+margin_top = 4.90241
+margin_right = 11.8148
+margin_bottom = 12.9024
+
+[node name="Folder2" type="Control" parent="Files"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="Files/Folder2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_top = 2.0
+margin_right = -2.0
+margin_bottom = -2.0
+custom_constants/vseparation = 2
+custom_constants/hseparation = 2
+columns = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton4" type="TextureButton" parent="Files/Folder2/GridContainer"]
+margin_right = 6.0
+margin_bottom = 6.0
+texture_normal = ExtResource( 7 )
+
+[node name="TextureButton" type="TextureButton" parent="Files/Folder2/GridContainer"]
+margin_left = 8.0
+margin_right = 14.0
+margin_bottom = 6.0
+texture_normal = ExtResource( 4 )
+
+[node name="TextureButton2" type="TextureButton" parent="Files/Folder2/GridContainer"]
+margin_left = 16.0
+margin_right = 22.0
+margin_bottom = 6.0
+texture_normal = ExtResource( 4 )
+
+[node name="Folder3" type="Control" parent="Files"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="Files/Folder3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_top = 2.0
+margin_right = -2.0
+margin_bottom = -2.0
+custom_constants/vseparation = 2
+custom_constants/hseparation = 2
+columns = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton4" type="TextureButton" parent="Files/Folder3/GridContainer"]
+margin_right = 6.0
+margin_bottom = 6.0
+texture_normal = ExtResource( 7 )
+
+[node name="TextureButton" type="TextureButton" parent="Files/Folder3/GridContainer"]
+margin_left = 8.0
+margin_right = 14.0
+margin_bottom = 6.0
+texture_normal = ExtResource( 4 )
+
+[node name="TextureButton2" type="TextureButton" parent="Files/Folder3/GridContainer"]
+margin_left = 16.0
+margin_right = 22.0
+margin_bottom = 6.0
+texture_normal = ExtResource( 5 )
+
+[node name="TextureButton3" type="TextureButton" parent="Files/Folder3/GridContainer"]
+margin_left = 24.0
+margin_right = 30.0
+margin_bottom = 6.0
+texture_normal = ExtResource( 5 )
+
+[node name="TextureButton5" type="TextureButton" parent="Files/Folder3/GridContainer"]
+margin_top = 8.0
+margin_right = 6.0
+margin_bottom = 14.0
+texture_normal = ExtResource( 5 )
+
+[node name="Bug" parent="Files/Folder3" instance=ExtResource( 8 )]
+margin_left = -0.820354
+margin_top = 8.21324
+margin_right = 7.17965
+margin_bottom = 16.2132
+
+[node name="Bug2" parent="Files/Folder3" instance=ExtResource( 8 )]
+margin_left = 2.09317
+margin_top = 9.2727
+margin_right = 10.0932
+margin_bottom = 17.2727
+
+[node name="Bug3" parent="Files/Folder3" instance=ExtResource( 8 )]
+margin_left = 3.54994
+margin_top = 11.2592
+margin_right = 11.5499
+margin_bottom = 19.2592
+
+[node name="Bug4" parent="Files/Folder3" instance=ExtResource( 8 )]
+margin_left = -0.423046
+margin_top = 11.2592
+margin_right = 7.57695
+margin_bottom = 19.2592
+
+[node name="Timer" type="Timer" parent="Files"]
+wait_time = 0.5
+
+[connection signal="mouse_entered" from="." to="." method="_on_Window_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_Window_mouse_exited"]
+[connection signal="pressed" from="DragButton" to="." method="start_dragging"]
+[connection signal="pressed" from="CloseButton" to="." method="close_window"]
+[connection signal="pressed" from="MaximizeButton" to="." method="maximize_window"]
+[connection signal="pressed" from="MinimizeButton" to="." method="minimize_window"]
+[connection signal="pressed" from="Files/Home/GridContainer/TextureButton" to="Files" method="OpenFolder1"]
+[connection signal="pressed" from="Files/Home/GridContainer/TextureButton2" to="Files" method="OpenFolder2"]
+[connection signal="pressed" from="Files/Home/GridContainer/TextureButton3" to="Files" method="OpenFolder3"]
+[connection signal="pressed" from="Files/Folder1/GridContainer/TextureButton4" to="Files" method="OpenHome"]
+[connection signal="pressed" from="Files/Folder1/GridContainer/TextureButton" to="Files" method="OpenShopping"]
+[connection signal="pressed" from="Files/Folder1/GridContainer/TextureButton2" to="Files" method="OpenTodo"]
+[connection signal="pressed" from="Files/Folder1/GridContainer/TextureButton3" to="Files" method="OpenBeach"]
+[connection signal="pressed" from="Files/Folder2/GridContainer/TextureButton4" to="Files" method="OpenHome"]
+[connection signal="pressed" from="Files/Folder2/GridContainer/TextureButton" to="Files" method="OpenResearch"]
+[connection signal="pressed" from="Files/Folder2/GridContainer/TextureButton2" to="Files" method="OpenShopping2"]
+[connection signal="pressed" from="Files/Folder3/GridContainer/TextureButton4" to="Files" method="OpenHome"]
+[connection signal="pressed" from="Files/Folder3/GridContainer/TextureButton" to="Files" method="OpenDie"]
+[connection signal="pressed" from="Files/Folder3/GridContainer/TextureButton2" to="Files" method="OpenFace"]
+[connection signal="pressed" from="Files/Folder3/GridContainer/TextureButton3" to="Files" method="OpenBlood"]
+[connection signal="pressed" from="Files/Folder3/GridContainer/TextureButton5" to="Files" method="OpenFace2"]

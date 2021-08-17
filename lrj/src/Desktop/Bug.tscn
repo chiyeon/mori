@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/textures/ui/bug.png" type="Texture" id=1]
+[ext_resource path="res://src/Desktop/Bug.gd" type="Script" id=2]
+[ext_resource path="res://assets/sound/bug.wav" type="AudioStream" id=3]
+
+[node name="Bug" type="TextureButton"]
+margin_left = -1.08522
+margin_top = 29.0052
+margin_right = 6.91478
+margin_bottom = 37.0052
+texture_normal = ExtResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Squash" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
+[connection signal="pressed" from="." to="." method="Squash"]

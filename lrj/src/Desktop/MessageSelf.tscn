@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://data/font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/textures/ui/window/messages/message_self.png" type="Texture" id=2]
+
+[node name="Control" type="Control"]
+margin_right = 32.0
+margin_bottom = 13.0
+rect_min_size = Vector2( 32, 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MessageSelf" type="NinePatchRect" parent="."]
+margin_left = 15.7622
+margin_top = 0.702364
+margin_right = 30.7622
+margin_bottom = 11.7024
+rect_min_size = Vector2( 15, 11 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 2 )
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MessageSelf"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -5.28976
+margin_top = -4.40079
+margin_right = 7.71024
+margin_bottom = 4.59921
+custom_fonts/font = ExtResource( 1 )
+text = "DDD"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

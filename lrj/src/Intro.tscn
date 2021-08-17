@@ -1,0 +1,104 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://data/font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://src/Intro.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Intro"
+length = 18.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.5, 3.2, 6.3, 12 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ "You can fix it,
+right ?", "Just get rid of
+all the bugs", "my user is
+umbra", "and pass is
+pr1me_3" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Label:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5, 1, 2.5, 3, 3.5, 4, 5.5, 6, 6.6, 7.1, 11.2, 11.7, 12.2, 12.7, 16.6, 17.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.745098, 0.745098, 0.745098, 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.588235, 0.588235, 0.588235, 1 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.890196, 0.890196, 0.890196, 1 )
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Intro = SubResource( 1 )
+
+[node name="Panel" type="Panel" parent="."]
+margin_right = 64.0
+margin_bottom = 64.0
+custom_styles/panel = SubResource( 2 )
+
+[node name="Label" type="Label" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -30.3331
+margin_top = -10.5
+margin_right = 30.6669
+margin_bottom = 10.5
+custom_fonts/font = ExtResource( 1 )
+text = "You can fix it,
+right ?"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -11.0
+margin_top = -4.5
+margin_right = 11.0
+margin_bottom = 4.5
+focus_mode = 0
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0.0901961, 0.0901961, 0.0901961, 1 )
+custom_colors/font_color_pressed = Color( 0.184314, 0.184314, 0.184314, 1 )
+enabled_focus_mode = 0
+text = "BEGIN"
+
+[connection signal="pressed" from="Button" to="." method="StartIntro"]

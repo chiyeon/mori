@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/imwatching.mp3-eae67d8a5b96fb87477a2971bbadfd49.mp3str"
+
+[deps]
+
+source_file="res://assets/sound/imwatching.mp3"
+dest_files=[ "res://.import/imwatching.mp3-eae67d8a5b96fb87477a2971bbadfd49.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
